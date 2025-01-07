@@ -1,18 +1,17 @@
-// ignore_for_file: prefer_const_constructors, library_private_types_in_public_api
+// ignore_for_file: prefer_const_constructors, library_private_types_in_public_api, prefer_const_constructors_in_immutables
 
 import 'package:flutter/material.dart';
 import 'package:flutter_state_managment/features/cart/screens/cart_screen.dart';
-import 'package:flutter_state_managment/features/product/constants/product_constants.dart';
 import 'package:flutter_state_managment/features/product/widgets/product_tile.dart';
+import 'package:flutter_state_managment/providers/product_provider.dart';
+import 'package:provider/provider.dart';
 
-class ProductListScreen extends StatefulWidget {
-  const ProductListScreen({super.key});
+// use
+// Provider.of   ,   Consumer
 
-  @override
-  _ProductListScreenState createState() => _ProductListScreenState();
-}
+class ProductListScreen extends StatelessWidget {
+  ProductListScreen({super.key});
 
-class _ProductListScreenState extends State<ProductListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,25 +24,26 @@ class _ProductListScreenState extends State<ProductListScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (_) => CartScreen(
-                    cartItems: productList.where((product) => product.isSelected).toList(),
-                  ),
+                  builder: (_) => CartScreen(),
                 ),
               );
             },
           ),
         ],
       ),
-      body: ListView.builder(
-        itemCount: productList.length,
-        itemBuilder: (context, index) {
-          final product = productList[index];
-          return ProductTile(
-            product: product,
-            onChanged: (value) {
-              setState(() {
-                product.isSelected = value ?? false;
-              });
+      body: Consumer<ProductProvider>(
+        builder: (context, productProvider, _) {
+          return ListView.builder(
+            itemCount: productProvider.products.length,
+            itemBuilder: (context, index) {
+              final product = productProvider.products[index];
+
+              return ProductTile(
+                product: product,
+                onChanged: (value) {
+                  productProvider.toggleProductSelection(product);
+                },
+              );
             },
           );
         },
