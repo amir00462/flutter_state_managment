@@ -5,13 +5,13 @@ import 'package:flutter_state_managment/features/product/screens/product_list_sc
 import 'package:flutter_state_managment/providers/product_provider.dart';
 import 'package:provider/provider.dart';
 
-// Use Provider StateManagment :
+// Use Provider StateManagment (way 2) :
 // 1. add Provider package to project
 // 2. use MultiProvider as root
 // 3. create Provider for each state
 // 4. add providers created to multiprovider
-// 5. use Provider.of -> when you do not need a rebuild in current ui
-// 6. use Consumer -> when you need a rebuild in current ui
+// 5. use context.watch -> listen to changes
+// 6. use context.read  -> get value of now , call a function
 
 void main() {
   runApp(MyApp());
