@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_state_managment/features/cart/screens/cart_screen.dart';
 import 'package:flutter_state_managment/features/product/constants/product_constants.dart';
-import 'package:flutter_state_managment/widgtets/product_tile.dart';
+import 'package:flutter_state_managment/features/product/widgets/product_tile.dart';
 
 class ProductListScreen extends StatefulWidget {
   const ProductListScreen({super.key});
