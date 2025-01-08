@@ -75,5 +75,9 @@ class ProductProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  bool isSelected(Product product) {
+    return product.isSelected;
+  }
+
   List<Product> get selectedProducts => _producs.where((product) => product.isSelected).toList();
 }
