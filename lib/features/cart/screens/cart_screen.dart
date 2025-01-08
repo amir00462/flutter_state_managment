@@ -9,13 +9,15 @@ import 'package:provider/provider.dart';
 class CartScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final cartItems = ref.watch(productNotifier.select(
-      (state) => state
-          .where(
-            (product) => product.isSelected,
-          )
-          .toList(),
-    ));
+    // final cartItems = ref.watch(productNotifier.select(
+    //   (state) => state
+    //       .where(
+    //         (product) => product.isSelected,
+    //       )
+    //       .toList(),
+    // ));
+
+    final cartItems = ref.read(productNotifier.notifier).selectedProducts;
 
     return Scaffold(
       appBar: AppBar(
