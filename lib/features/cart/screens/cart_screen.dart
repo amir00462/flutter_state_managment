@@ -6,11 +6,9 @@ import 'package:flutter_state_managment/providers/product_provider.dart';
 import 'package:provider/provider.dart';
 
 class CartScreen extends StatelessWidget {
-  CartScreen();
-
   @override
   Widget build(BuildContext context) {
-    final cartItems = Provider.of<ProductProvider>(context).selectedProducts;
+    final cartItems = context.read<ProductProvider>().selectedProducts;
 
     return Scaffold(
       appBar: AppBar(

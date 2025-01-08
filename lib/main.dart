@@ -10,8 +10,13 @@ import 'package:provider/provider.dart';
 // 2. use MultiProvider as root
 // 3. create Provider for each state
 // 4. add providers created to multiprovider
-// 5. use context.watch -> listen to changes
-// 6. use context.read  -> get value of now , call a function
+
+// 5. way1 -> Consumer()       ,   Provider.of()  onTap, function call, need
+// 5. way2 -> context.watch()  ,  context.read()
+
+// small and medium size -> easy way -> way2
+// bigger projects -> way1
+// hybrid approach -> combine way1 and way2
 
 void main() {
   runApp(MyApp());
@@ -26,7 +31,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (context) => ProductProvider(),
-        )
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

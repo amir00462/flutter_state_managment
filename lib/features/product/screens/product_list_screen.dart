@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 
 // use
 // Provider.of   ,   Consumer
+// context.read() , context.watch()
 
 class ProductListScreen extends StatelessWidget {
   ProductListScreen({super.key});
@@ -31,19 +32,15 @@ class ProductListScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Consumer<ProductProvider>(
-        builder: (context, productProvider, _) {
-          return ListView.builder(
-            itemCount: productProvider.products.length,
-            itemBuilder: (context, index) {
-              final product = productProvider.products[index];
+      body: ListView.builder(
+        itemCount: context.watch<ProductProvider>().products.length,
+        itemBuilder: (context, index) {
+          final product = context.watch<ProductProvider>().products[index];
 
-              return ProductTile(
-                product: product,
-                onChanged: (value) {
-                  productProvider.toggleProductSelection(product);
-                },
-              );
+          return ProductTile(
+            product: product,
+            onChanged: (value) {
+              context.read<ProductProvider>().toggleProductSelection(product);
             },
           );
         },
