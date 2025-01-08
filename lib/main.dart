@@ -1,8 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_state_managment/features/product/models/product.dart';
 import 'package:flutter_state_managment/features/product/screens/product_list_screen.dart';
-import 'package:flutter_state_managment/providers/product_provider.dart';
+import 'package:flutter_state_managment/notifier/product_notifier.dart';
 import 'package:provider/provider.dart';
 
 // Riverpod
@@ -19,7 +21,7 @@ import 'package:provider/provider.dart';
 // ref.read()     ref.watch()
 
 void main() {
-  runApp(MyApp());
+  runApp(ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -27,16 +29,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (context) => ProductProvider(),
-        ),
-      ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: ProductListScreen(),
-      ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: ProductListScreen(),
     );
   }
 }

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_state_managment/features/cart/screens/cart_screen.dart';
 import 'package:flutter_state_managment/features/product/models/product.dart';
 import 'package:flutter_state_managment/features/product/widgets/product_tile.dart';
-import 'package:flutter_state_managment/providers/product_provider.dart';
+import 'package:flutter_state_managment/notifier/product_notifier.dart';
 import 'package:provider/provider.dart';
 
 // use
