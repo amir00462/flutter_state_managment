@@ -5,18 +5,18 @@ import 'package:flutter_state_managment/features/product/screens/product_list_sc
 import 'package:flutter_state_managment/providers/product_provider.dart';
 import 'package:provider/provider.dart';
 
-// Use Provider StateManagment (way 2) :
-// 1. add Provider package to project
-// 2. use MultiProvider as root
-// 3. create Provider for each state
-// 4. add providers created to multiprovider
+// Riverpod
+// 1. flutter pub add flutter_riverpod
+// 2. add ProviderScope to root
+// 3. init Provider
 
-// 5. way1 -> Consumer()       ,   Provider.of()  onTap, function call, need
-// 5. way2 -> context.watch()  ,  context.read()
+// three type provider ->
+// * StateProvider                      -> easy state      (int , String)
+// * StateNofifierProvider              -> Complex state
+// * FutureProvider                     -> rest api , async
 
-// small and medium size -> easy way -> way2
-// bigger projects -> way1
-// hybrid approach -> combine way1 and way2
+// 4. use ref instead of context
+// ref.read()     ref.watch()
 
 void main() {
   runApp(MyApp());
